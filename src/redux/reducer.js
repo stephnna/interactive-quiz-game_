@@ -22,7 +22,7 @@ const gameReducer = (state = initialState, action) => {
 export const getQuestionsApi = (categories, difficulty, number) => async (dispatch) =>{
 try{
   // 
-  const {data} = await axios.get(`${process.env.REACT_APP_QUESTIONS_API}${categories}&limit=${number}${difficulty}`);
+  const {data} = await axios.get(`${import.meta.env.VITE_APP_QUESTIONS_API}${categories}&limit=${number}${difficulty}`);
   console.log(data, 'dat');         
   dispatch(fetchQuestions(data));
 } catch (error) {

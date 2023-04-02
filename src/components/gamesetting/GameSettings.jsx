@@ -1,6 +1,6 @@
 // import { useEffect } from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
-import setting from '../../assets/img/setting.jpg'
+import setting from '../../assets/setting.jpg'
 import MyForm from './MyForm';
 // import { getQuestionsApi } from '../../redux/reducer';
 

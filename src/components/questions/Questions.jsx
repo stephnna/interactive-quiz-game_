@@ -1,6 +1,6 @@
 // import { useDispatch, useSelector } from "react-redux";
 // import { useEffect, useState } from "react";
-import question from '../../assets/img/question.jpg';
+import question from '../../assets/question.jpg';
 import QuestionAnswer from './QuestionAnswer';
 // import ProgressBar from "@ramonak/react-progress-bar";
 
