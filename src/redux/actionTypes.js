@@ -1,0 +1,1 @@
+export const FETCH_QUESTION_SUCCESS = 'gameApp/questions/FETCH_QUESTION_SUCCESS';
