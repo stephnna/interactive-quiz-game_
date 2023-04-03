@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { FETCH_QUESTION_SUCCESS } from "./actionTypes";
-import { fetchQuestions } from './actions';
 
 const initialState = {
 questions: [],
@@ -23,30 +22,31 @@ export const getQuestionsApi = (categories, difficulty, number) => async (dispat
 try{
   // 
   const {data} = await axios.get(`${import.meta.env.VITE_APP_QUESTIONS_API}${categories}&limit=${number}${difficulty}`);
-  console.log(data, 'dat');         
   dispatch(fetchQuestions(data));
 } catch (error) {
   console.log(error);
 }
 }
 
-// export const questionPage = (questionData) => {
-//   const organizedQuestions = [];
-//   questionData.forEach((obj) => {
-//     const newDetail = {
-//       id: obj.id,
-//       category: obj.category,
-//       correctAnswer: obj.correctAnswer,      
-//       incorrectAnswers: obj.incorrectAnswers,
-//     };
-//     organizedCrptoDetail.push(newDetail);
-//   });
-//   return {
-//     type: FETCH_MARKET_DETAIL_SUCCESS,
-//     organizedCrptoDetail,
-//     id,
-//   };
-// };
+
+export const fetchQuestions = (questionData) => {
+  const questions = [];
+  questionData.forEach((obj) => {
+    const newDetail = {
+      id: obj.id,
+      category: obj.category,
+      question: obj.question,
+      correctAnswer: obj.correctAnswer,      
+      incorrectAnswers: obj.incorrectAnswers,
+    };
+    questions.push(newDetail);
+  });
+  
+  return {
+    type: FETCH_QUESTION_SUCCESS,
+    questions,    
+  };
+};
 
 // export const fetchMarketFailure = (error) => ({
 //   type: FETCH_MARKET_FAILURE,

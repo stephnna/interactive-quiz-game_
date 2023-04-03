@@ -3,7 +3,7 @@ export const category = [
   {value: "film_and_tv", label: "Film & TV" },
   {value: "food_and_drink", label: "Food & Drinks" },
   {value: "general_knowledge", label: "General Knowledge" },
-  {value: "geography", label: "geography" },
+  {value: "geography", label: "Geography" },
   {value: "history", label: "History" },
   {value: "music", label: "Music" },
   {value: "science", label: "Science" },
@@ -18,5 +18,5 @@ export const difficulty = [
 ]
 
 export const multiple = [
-  {value: "multiple", label: "Multiple" }
+  {value: "multiple", label: "Multiple Choice" }
 ]

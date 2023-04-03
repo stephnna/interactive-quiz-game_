@@ -1,5 +1,4 @@
 import Select from 'react-select';
-
 const FirstInput = ({category, difficulty, multiple, handleCategoryChange, handleDiffucultyChange}) => {
   
    return (
