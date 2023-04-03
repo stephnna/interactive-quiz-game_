@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { FETCH_QUESTION_SUCCESS } from "./actionTypes";
+import { FETCH_QUESTION_SUCCESS, SCORED_POINT } from "./actionTypes";
 
 const initialState = {
 questions: [],
+score: 0,
 }
 
 const gameReducer = (state = initialState, action) => {
@@ -10,13 +11,45 @@ const gameReducer = (state = initialState, action) => {
     case FETCH_QUESTION_SUCCESS:
       return {
         ...state,
-        questions: action.questions
+        questions: action.questions,
+      };
+
+      case SCORED_POINT:
+      return {
+        ...state,
+        score: action.score,
       };
 
       default:
         return state;
   }
-}
+};
+
+export const changeScore = (score) => { 
+  return {
+    type: SCORED_POINT,
+    score,    
+  };
+};
+
+export const fetchQuestions = (questionData) => {
+  const questions = [];
+  questionData.forEach((obj) => {
+    const newDetail = {
+      id: obj.id,      
+      question: obj.question,      
+      correctAnswer: obj.correctAnswer,      
+      incorrectAnswers: obj.incorrectAnswers,
+    };
+    questions.push(newDetail);
+  });
+  
+  return {
+    type: FETCH_QUESTION_SUCCESS,
+    questions,    
+  };
+};
+
 
 export const getQuestionsApi = (categories, difficulty, number) => async (dispatch) =>{
 try{
@@ -29,24 +62,7 @@ try{
 }
 
 
-export const fetchQuestions = (questionData) => {
-  const questions = [];
-  questionData.forEach((obj) => {
-    const newDetail = {
-      id: obj.id,
-      category: obj.category,
-      question: obj.question,
-      correctAnswer: obj.correctAnswer,      
-      incorrectAnswers: obj.incorrectAnswers,
-    };
-    questions.push(newDetail);
-  });
-  
-  return {
-    type: FETCH_QUESTION_SUCCESS,
-    questions,    
-  };
-};
+
 
 // export const fetchMarketFailure = (error) => ({
 //   type: FETCH_MARKET_FAILURE,

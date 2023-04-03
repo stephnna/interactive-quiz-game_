@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getQuestionsApi } from '../../redux/reducer'; 
 import FirstInput from './FirstInput';
 import { category, difficulty, multiple } from './InputOptions';
 
+let isInitial = true;
 const MyForm = () => {
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState({});
   const min = 1;
   const max = 50;
+
 
   const handleCategoryChange = (event) => {    
     setSelectedCategory(event);    
@@ -47,14 +49,16 @@ const MyForm = () => {
     if (selectedDifficulty) {     
        difficultStr = selectedDifficulty.value;       
     };    
-    const queryDifficulty = `&difficulty=${difficultStr}`;
-
-    dispatch(getQuestionsApi(queryCategory, queryDifficulty, value))                  
-   const outcome = questions.length > 0 ? navigate("/question", {replace: true}) : "Create your settings"; 
-    console.log(outcome);
+    const queryDifficulty = `&difficulty=${difficultStr}`;    // if(isInitial){
+      
+        dispatch(getQuestionsApi(queryCategory, queryDifficulty, value))                 
+        const outcome = questions.length > 0 ? navigate("/question", {replace: true}) : "Create your settings";
+     
+      // console.log(outcome);
+      // isInitial = false;      
+      // }     
   };
-       
-
+ 
   return (  
     <div className="absolute w-5/6 setting-card py-6 sm:m-0 sm:w-1/2 flex flex-col justify-center items-center bg-slate-600  rounded-3xl">
       <div><h1><i className='animate-bounce'>Game Settings</i></h1></div>
