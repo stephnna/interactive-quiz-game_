@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { changeScore } from "../../redux/reducer";
 import questionImage from '../../assets/question.jpg';
 import { useNavigate } from "react-router-dom";
+import Timer from "./Timer";
+import useSound from "use-sound";
 
 const Question = () => {
   const {questions, score} = useSelector((state) => state.game);
@@ -57,7 +59,7 @@ const Question = () => {
     setSelectedOption(event.target.textContent);
     setclassName(`${className} active:bg-blue-900`);    
     if (event.target.textContent === question.correctAnswer) {
-      delay(2000, ()=>{
+      delay(2000, () =>{
         setclassName(`${className} animate-correct`);
         dispatch(changeScore((score + 1)));
         delay(3000, ()=>{
@@ -92,7 +94,10 @@ const commonStyle = "flex justify-center items-center w-24 h-24 rounded-full bor
       </div>      
       <div className="absolute text-center w-full h-full flex flex-col justify-evenly items-center">       
         <div className={commonStyle}>
-          30
+          <Timer
+          navigateSetQustion={navigateSetQustion} 
+          questionIndex={questionIndex}
+          />
         </div>
         <div className="w-5/6 border-4 font-medium text-black bg-gradient-to-r from-cyan-500 to-blue-500 sm:w-3/6 p-2 rounded-2xl bg-slate-400">
           Question {questionIndex + 1}: {questions[questionIndex].question}
