@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { FETCH_QUESTION_SUCCESS, SCORED_POINT } from "./actionTypes";
+import { FETCH_QUESTION_SUCCESS, SCORED_POINT, PERCENTAGE_SCORE } from "./actionTypes";
 
 const initialState = {
 questions: [],
 score: 0,
+percentage: 0,
 }
 
 const gameReducer = (state = initialState, action) => {
@@ -20,6 +21,12 @@ const gameReducer = (state = initialState, action) => {
         score: action.score,
       };
 
+      case PERCENTAGE_SCORE:
+        return {
+          ...state,
+          percentage: action.percentage,
+        };
+
       default:
         return state;
   }
@@ -29,6 +36,13 @@ export const changeScore = (score) => {
   return {
     type: SCORED_POINT,
     score,    
+  };
+};
+
+export const percentageScore = (percentage) => { 
+  return {
+    type: PERCENTAGE_SCORE,
+    percentage,    
   };
 };
 

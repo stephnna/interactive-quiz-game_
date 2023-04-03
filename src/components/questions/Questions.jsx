@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { changeScore } from "../../redux/reducer";
+import { changeScore} from "../../redux/reducer";
 import questionImage from '../../assets/question.jpg';
 import { useNavigate } from "react-router-dom";
 import Timer from "./Timer";
 import useSound from "use-sound";
+import correct from "../../assets/sound-correct.mp3";
+import wrong from "../../assets/sound-wrong.mp3";
+
 
 const Question = () => {
   const {questions, score} = useSelector((state) => state.game);
@@ -18,13 +21,18 @@ const Question = () => {
   const initialClassName = "p-1.5 hover:scale-110 flex justify-center bg-blue-400 hover:bg-blue-900  text-white font-medium border-2 cursor-pointer items-center min-h-[40px] m-3 rounded-2xl"; 
   const [className, setclassName] = useState(initialClassName);
   const [selectedOption, setSelectedOption] = useState("");
+  const [playNow] = useSound();
+  const [correctOption] = useSound(correct);
+  const [wrongOption] = useSound(wrong);
   
   const getRandomInt = (max) => {
     return Math.floor(Math.random() * Math.floor(max));    
   }
 
-  
-  
+  // useEffect(() => {
+  //  playNow();
+  // }, [third])
+ 
 
   useEffect(() => {
     if(questions.length){
@@ -48,7 +56,7 @@ const Question = () => {
       if (questionIndex + 1 < questions.length) {
         setQuestionIndex(questionIndex + 1);     
       }
-      else {
+      else {  
         navigate("/result", {replace: true})
       }
   }
@@ -61,6 +69,9 @@ const Question = () => {
     if (event.target.textContent === question.correctAnswer) {
       delay(2000, () =>{
         setclassName(`${className} animate-correct`);
+        delay(2000, ()=>{
+          correctOption();
+          });        
         dispatch(changeScore((score + 1)));
         delay(3000, ()=>{
         navigateSetQustion(); 
@@ -71,6 +82,9 @@ const Question = () => {
     else {
       delay(2000, ()=>{
         setclassName(`${className} animate-wrong`);
+        delay(2000, ()=>{
+          wrongOption();
+          });       
         delay(3000, ()=>{
           navigateSetQustion();
           setclassName(className); 

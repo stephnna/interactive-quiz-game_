@@ -61,13 +61,11 @@ const MyForm = () => {
  
   return (  
     <div className="absolute w-5/6 setting-card py-6 sm:m-0 sm:w-1/2 flex flex-col justify-center items-center bg-slate-600  rounded-3xl">
-      <div><h1><i className='animate-bounce'>Game Settings</i></h1></div>
-      <div className='w-4/5'>
-       <form 
-       onSubmit={startGame}   
-       >
+      <div><h1><i className='animate-bounce p-2 rounded-2xl bg-red-100'>Game Settings</i></h1></div>
+      <div className='w-4/5 my-8'>
+       <form>
       <FirstInput
-      category={category}
+       category={category}
       difficulty={difficulty}
       multiple={multiple}
       handleCategoryChange={handleCategoryChange}
@@ -82,14 +80,17 @@ const MyForm = () => {
         step="1"       
         onChange={questionNumber} 
         />
-        </div>
-         <div>
-         <input type="submit"
-         className='cursor-pointer'
-         /> 
-        </div>        
+        </div>                
         </form>
-      </div>       
+      </div> 
+      <div className='w-18 h-18'>
+         <button 
+         type="button"         
+         className='flex w-16 hover:scale-110 active:scale-75 h-16 font-extrabold justify-center items-center cursor-pointer rounded-full bg-green-600'
+         onClick={startGame}
+         > Start 
+         </button>
+        </div>       
      <div>     
      </div>        
     </div>      

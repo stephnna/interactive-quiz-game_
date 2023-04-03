@@ -1,9 +1,10 @@
 import Select from 'react-select';
 const FirstInput = ({category, difficulty, multiple, handleCategoryChange, handleDiffucultyChange}) => {
+  const commonStyle = 'mb-3 cursor-pointer';
   
    return (
     <>
-    <div className='mb-3'> 
+    <div className={commonStyle}> 
     <Select       
      placeholder="Category"
      options={category}
@@ -11,14 +12,14 @@ const FirstInput = ({category, difficulty, multiple, handleCategoryChange, handl
      onChange={handleCategoryChange}
      />
      </div>
-     <div className='mb-3'>
+     <div className={commonStyle}>
      <Select       
        placeholder="Difficulty"
        options={difficulty}          
        onChange={handleDiffucultyChange}
        />
        </div>
-       <div className='mb-3'>
+       <div className={commonStyle}>
        <Select       
          placeholder="Question Type"
          options={multiple}           
