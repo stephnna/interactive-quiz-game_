@@ -13,7 +13,7 @@ import {
 
 const ShareNow = () => {
 
-  const commonPageUrl = "interactive-quiz-game.netlify.app";
+  const commonPageUrl = "https://interactive-game-quiz.netlify.app/";
   const commonTitle = "I am excited to share my score on interactive quiz game";
   return (
     <>
