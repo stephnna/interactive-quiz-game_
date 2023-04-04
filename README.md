@@ -49,6 +49,11 @@
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
+-- An interactive quiz game that allows users to answer multiple-choice questions
+The game should keep track of the user's score and display it at the end of the game
+The game should display a timer to limit the time for answering each question
+The game should provide feedback on the user's answers, indicating whether they are correct or incorrect
+
 
 - **Connects to blockchain**
 - **sends ethereum through the blockchain network**
