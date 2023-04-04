@@ -4,13 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import { getQuestionsApi } from '../../redux/reducer'; 
 import FirstInput from './FirstInput';
 import { category, difficulty, multiple } from './InputOptions';
+import useSound from 'use-sound';
+import start from '../../assets/start.mp3';
 
-let isInitial = true;
 const MyForm = () => {
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [selectedDifficulty, setSelectedDifficulty] = useState({});
+  const [playNow] = useSound(start);
   const min = 1;
   const max = 50;
+
+  useEffect(() => {
+    playNow();   
+  }, [playNow]);
+  
 
 
   const handleCategoryChange = (event) => {    
@@ -32,8 +39,7 @@ const MyForm = () => {
     setValue(value);    
    };
   
-  const startGame = (event) => { 
-      event.preventDefault();      
+  const startGame = () => {       
       const selectedString = [];       
     let commaStr = "";      
     if (selectedCategory.length > 0) {       
@@ -51,18 +57,22 @@ const MyForm = () => {
     };    
     const queryDifficulty = `&difficulty=${difficultStr}`;    // if(isInitial){
       
-        dispatch(getQuestionsApi(queryCategory, queryDifficulty, value))                 
-        const outcome = questions.length > 0 ? navigate("/question", {replace: true}) : "Create your settings";
-     
-      // console.log(outcome);
-      // isInitial = false;      
-      // }     
+    dispatch(getQuestionsApi(queryCategory, queryDifficulty, value))    
+            
   };
- 
-  return (  
+
+  useEffect(() => {
+    if(questions.length) return navigate("/question", {replace: true}); 
+  }, [questions])
+  
+
+ return (  
     <div className="absolute w-5/6 setting-card py-6 sm:m-0 sm:w-1/2 flex flex-col justify-center items-center bg-slate-600  rounded-3xl">
-      <div><h1><i className='animate-bounce p-2 rounded-2xl bg-red-100'>Game Settings</i></h1></div>
-      <div className='w-4/5 my-8'>
+      <div className='mb-6 flex text-center '><h1><i className='animate-bounce  md:font-medium text-white p-2  rounded-2xl'>
+        Welcome to Interactive quiz game, create your settings and click start to play!
+        </i></h1></div>
+      <div className='animate-bounce p-2 rounded-2xl bg-red-100'><h2><i>Game Settings</i></h2></div>
+      <div className='w-4/5 mb-8'>
        <form>
       <FirstInput
        category={category}
@@ -86,7 +96,7 @@ const MyForm = () => {
       <div className='w-18 h-18'>
          <button 
          type="button"         
-         className='flex w-16 hover:scale-110 active:scale-75 h-16 font-extrabold justify-center items-center cursor-pointer rounded-full bg-green-600'
+         className='flex w-16 hover:scale-110 active:scale-75 h-16 font-extrabold justify-center items-center cursor-pointer rounded-full bg-green-600 hover:bg-green-900'
          onClick={startGame}
          > Start 
          </button>

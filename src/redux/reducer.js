@@ -1,19 +1,44 @@
 import axios from 'axios';
-import { FETCH_QUESTION_SUCCESS, SCORED_POINT, PERCENTAGE_SCORE } from "./actionTypes";
+import { 
+  FETCH_QUESTION_SUCCESS, 
+  SCORED_POINT, 
+  PERCENTAGE_SCORE ,
+  FETCH_QUESTION_SUCCESS_BEGINS,
+  FETCH_QUESTION_FAILURE,
+  BAR_PERCENTAGE
+} from "./actionTypes";
 
 const initialState = {
 questions: [],
 score: 0,
+loading: false,
+error: null,
+bar: 0,
 percentage: 0,
 }
 
 const gameReducer = (state = initialState, action) => {
   switch (action.type) {
+    case FETCH_QUESTION_SUCCESS_BEGINS:
+      return {
+        ...state,        
+        loading: true,
+        error: null,
+      };
+
     case FETCH_QUESTION_SUCCESS:
       return {
         ...state,
         questions: action.questions,
+        loading: false,        
       };
+
+      case FETCH_QUESTION_FAILURE:
+        return {
+          ...state,
+          error: action.error,         
+          loading: false,        
+        };
 
       case SCORED_POINT:
       return {
@@ -27,6 +52,12 @@ const gameReducer = (state = initialState, action) => {
           percentage: action.percentage,
         };
 
+      case BAR_PERCENTAGE:
+         return {
+            ...state,
+            bar: action.bar,
+          };
+
       default:
         return state;
   }
@@ -36,6 +67,13 @@ export const changeScore = (score) => {
   return {
     type: SCORED_POINT,
     score,    
+  };
+};
+
+export const updateBar = (bar) => { 
+  return {
+    type: BAR_PERCENTAGE,
+    bar,    
   };
 };
 
@@ -64,43 +102,25 @@ export const fetchQuestions = (questionData) => {
   };
 };
 
+export const loadingQuestions = () => ({
+  type: FETCH_QUESTION_SUCCESS_BEGINS,
+});
+
+export const fetchQuestionsFailure = (error) =>({
+  type: FETCH_QUESTION_FAILURE,
+  error,
+})
+
+
 
 export const getQuestionsApi = (categories, difficulty, number) => async (dispatch) =>{
-try{
-  // 
+dispatch(loadingQuestions());
+  try{  
   const {data} = await axios.get(`${import.meta.env.VITE_APP_QUESTIONS_API}${categories}&limit=${number}${difficulty}`);
   dispatch(fetchQuestions(data));
 } catch (error) {
-  console.log(error);
+  dispatch(fetchQuestionsFailure(error));
 }
 }
-
-
-
-
-// export const fetchMarketFailure = (error) => ({
-//   type: FETCH_MARKET_FAILURE,
-//   error,
-// });
-
-// export const getDetailPage = (id, name, symbol) => async (dispatch) => {
-//   dispatch(loadingMarket());
-//   try {
-//     // const resultDet = await axios.get(`https://api.coinlore.net/api/ticker/?id=${id}`);
-//     // const resultMar = await axios.get(`https://api.coinlore.net/api/coin/markets/?id=${id}`);
-//     const { data: socials } = await axios.get(`https://api.coinlore.net/api/coin/social_stats/?id=${id}`);
-
-//     const { reddit: redditObj, twitter: twitterObj } = socials;
-//     const combinedDetail = [{
-//       avg_active_users: redditObj.avg_active_users,
-//       subscribers: redditObj.subscribers,
-//       followers_count: twitterObj.followers_count,
-//       status_count: twitterObj.status_count,
-//     }];
-//     dispatch(detailPage(combinedDetail, id, name, symbol));
-//   } catch (error) {
-//     dispatch(fetchMarketFailure(error));
-//   }
-// };
 
 export default gameReducer;

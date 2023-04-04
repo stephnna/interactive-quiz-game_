@@ -12,9 +12,9 @@ export const category = [
 ]
 
 export const difficulty = [
-  {value: "hard", label: "Hard" },
+  {value: "easy", label: "Easy" },
   {value: "medium", label: "Medium" },
-  {value: "easy", label: "Easy" }
+  {value: "hard", label: "Hard" },  
 ]
 
 export const multiple = [
