@@ -38,16 +38,11 @@
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
-  <summary>Server</summary>
+<summary>Client</summary>
   <ul>
-    <li><a href="https://expressjs.com/">Ruby on Rails</a></li>
-  </ul>
-</details>
-
-<details>
-<summary>Blockchain</summary>
-  <ul>
-    <li><a href="https://www.postgresql.org/">Ethereum</a></li>
+    <li><a href="https://react.dev/blog/2023/03/16/introducing-react-dev">React</a></li>
+     <li><a href="https://redux.js.org/">Redux</a></li>
+     <li><a href="https://tailwindcss.com/">TailwindCSS</a></li>
   </ul>
 </details>
 
