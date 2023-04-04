@@ -96,8 +96,8 @@ If you like this project kindly star the project
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-We would like to thank the original designer of this question which was a test question
-View the origin document: [@stephnna](https://docs.google.com/document/d/1_e75wXocwZF-IdeqDwvWR52deU34gGokVGthlI-MmAk/edit#heading=h.3qmrs766hafj)
+We would like to thank the original designer of this question which was a test question.
+View the full desction of [project task](https://docs.google.com/document/d/1_e75wXocwZF-IdeqDwvWR52deU34gGokVGthlI-MmAk/edit#heading=h.3qmrs766hafj)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
