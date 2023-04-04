@@ -11,10 +11,7 @@
   - [🚀 Frontend Link](#frontend-link)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
+  - [Prerequisites](#prerequisites) 
   - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
@@ -33,7 +30,7 @@
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Project Preview <a name="screeshot"></a>
-<img src="./client/public/screenshot.png" />
+<img src="./public/screenshot.png" />
 
 ### Tech Stack <a name="tech-stack"></a>
 
