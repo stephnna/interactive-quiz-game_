@@ -58,7 +58,7 @@
 
 <!-- LIVE DEMO -->
 ## 🚀 LIVE DEMO <a name="live-demo"></a>
-- [Link to Live Demo]()
+- [Link to Live Demo](https://interactive-game-quiz.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
