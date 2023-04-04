@@ -49,24 +49,16 @@
 <!-- Features -->
 
 ### Key Features <a name="key-features"></a>
--- An interactive quiz game that allows users to answer multiple-choice questions
-The game should keep track of the user's score and display it at the end of the game
-The game should display a timer to limit the time for answering each question
-The game should provide feedback on the user's answers, indicating whether they are correct or incorrect
-
-
-- **Connects to blockchain**
-- **sends ethereum through the blockchain network**
-- **has metamask pairing**
-- **interaction with samrt contract**
-- **This project has a stunning designs**
-
+- **An interactive quiz game that allows users to answer multiple-choice questions**
+- **The game keeps track of the user's score and display it at the end of the game**
+- **It displays a timer to limit the time for answering each question**
+- **It provides feedback on the user's answers, indicating whether they are correct or incorrect**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LIVE DEMO -->
 ## 🚀 LIVE DEMO <a name="live-demo"></a>
-- [Link to Live Demo](https://vildcoin.vercel.app/)
+- [Link to Live Demo]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
